@@ -1,0 +1,77 @@
+<idea-plugin>
+  <id>com.fxiaoke.lizc8407</id>
+  <name>Vue Page</name>
+  <version>2.0.0</version>
+  <vendor>lizc</vendor>
+
+  <description>
+    <![CDATA[
+        <p>Create separate VUE component, includes TS and JS versions.</p>
+        <h2>How to use</h2>
+        <ul>
+          <li>right-click on the project folder, select `vue page` or `vue ts page` item in the menu.</li>
+          <li>fill in the component name. for example: `hello-world`, then press `enter` key.</li>
+        </ul>
+        <br>
+        <p>this will create a folder named `hello-world`, and three files in it :</p>
+        <h3>for JS version</h3>
+        <ul>
+          <li>_hello-world.js</li>
+          <li>_hello-world.less</li>
+          <li>hello-world.vue</li>
+        </ul>
+        <h3>for TS version</h3>
+        <ul>
+          <li>hello-world.html</li>
+          <li>hello-world.less</li>
+          <li>hello-world.vue</li>
+        </ul>
+    ]]>
+  </description>
+
+
+  <change-notes><![CDATA[
+       <ul>
+            <li>Auto open files in editor after creation</li>
+            <li>Update template</li>
+          </ul>
+    ]]>
+  </change-notes>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceInterface="fk.vue.component.data.ComponentSettingsState"
+                    serviceImplementation="fk.vue.component.data.ComponentSettingsState"/>
+
+    <projectService serviceInterface="fk.vue.tscomponent.data.TsComponentSettingsState"
+                    serviceImplementation="fk.vue.tscomponent.data.TsComponentSettingsState"/>
+  </extensions>
+
+  <actions>
+    <group description="Vue" id="com.fxiaoke.lizc8407.action">
+      <separator/>
+      <action id="com.fxiaoke.lizc8407.DialogAction"
+              class="fk.vue.component.action.ComponentCreatorAction"
+              icon="/icons/component.png"
+              text="Vue Page"
+              description="Create Vue Page">
+      </action>
+      <action id="com.fxiaoke.lizc8407.TsDialogAction"
+              class="fk.vue.tscomponent.action.TsComponentCreatorAction"
+              icon="/icons/component.png"
+              text="Vue Ts Page"
+              description="Create Vue Ts Page">
+      </action>
+      <separator/>
+
+      <add-to-group group-id="NewGroup" anchor="first"/>
+    </group>
+  </actions>
+
+</idea-plugin>

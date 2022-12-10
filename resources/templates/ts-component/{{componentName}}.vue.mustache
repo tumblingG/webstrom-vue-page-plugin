@@ -1,0 +1,14 @@
+<script lang="ts">
+import 'reflect-metadata';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component({
+    name: '{{ componentNameCamelCase }}'
+})
+export default class {{ componentNameCamelCase }} extends Vue {
+
+}
+</script>
+
+<template src="./{{ componentName }}.html"></template>
+<style src="./{{ componentName }}.less" lang="less" scoped></style>
